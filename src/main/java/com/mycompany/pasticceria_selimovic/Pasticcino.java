@@ -8,7 +8,7 @@ package com.mycompany.pasticceria_selimovic;
  *
  * @author selim
  */
-public class Pasticcini 
+public class Pasticcino 
 {
     private String tipo;
     private int quantita;
@@ -16,7 +16,7 @@ public class Pasticcini
     private static long nextCodice;
     private long codice;
     
-    public Pasticcini(String tipo, double costo, int quantita,int codice) 
+    public Pasticcino(String tipo, double costo, int quantita,int codice) 
     {
         this.codice=nextCodice; 
         nextCodice++; 
@@ -25,12 +25,12 @@ public class Pasticcini
         setQuantita(quantita);
     } 
     
-    public Pasticcini(Pasticcini pasticcini)
+    public Pasticcino(Pasticcino pasticcino)
     {
-        codice=pasticcini.getCodice();
-        tipo=pasticcini.getTipo();
-        costo=pasticcini.getCosto();
-        quantita=pasticcini.getQuantita();
+        codice=pasticcino.getCodice();
+        tipo=pasticcino.getTipo();
+        costo=pasticcino.getCosto();
+        quantita=pasticcino.getQuantita();
     }
    
     public String getTipo() 
