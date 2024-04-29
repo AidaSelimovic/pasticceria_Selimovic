@@ -50,9 +50,14 @@ public class Pasticceria
         return contatore;
     }
     
-   public void setPasticcino()
+   public int setPasticcino(Pasticcino p, int posizione)
    {
-       
+         if (posizione<0 || posizione>=N_MAX_PASTICCINI)
+            return -1;  //Posizione non esiste
+        if (pasticcino[posizione]!=null)
+            return -2;  //Posizione occupata
+        pasticcino[posizione]=new Pasticcino(p);
+        return posizione;
    }
     
     public int getPasticcino(Pasticcino p)

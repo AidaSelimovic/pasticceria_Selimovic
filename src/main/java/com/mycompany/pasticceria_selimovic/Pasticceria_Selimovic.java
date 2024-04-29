@@ -21,13 +21,13 @@ public class Pasticceria_Selimovic {
         Menu menu;
         int voceScelta = 0;
         Pasticceria p1=new Pasticceria();
-        int esito;
+        int esito = 0;
         Scanner tastiera=new Scanner(System.in);
         String tipo;
         int quantita;
         long codice;
-        double costo;
-        Pasticcino p = null;
+        double costo = 0;
+        Pasticcino p;
         int posizione;
         String[] elencoTipiPasticcini;
         
@@ -53,7 +53,7 @@ public class Pasticceria_Selimovic {
                     System.out.println("Arrivederci!");
                     break;
                 case 1:
-                    System.out.println(p.toString());
+                    System.out.println(p1.toString());
                     break;
                 case 2:
                     System.out.println("Premi invio per continuare...");
@@ -64,7 +64,9 @@ public class Pasticceria_Selimovic {
                     quantita=tastiera.nextInt();
                     System.out.println("Posizione (0..20) --> ");
                     posizione=tastiera.nextInt();  
+                    p1.setPasticcino(new Pasticcino(tipo, costo, quantita, codice));
                     break;
+                    
                 
             }
         }while(voceScelta!=0);
