@@ -51,49 +51,38 @@ public class Pasticceria
     }
     
    public int setPasticcino(Pasticcino p, int posizione)
-   {
-         if (posizione<0 || posizione>=N_MAX_PASTICCINI)
+    {
+        if (posizione<0 || posizione>=N_MAX_PASTICCINI)
             return -1;  //Posizione non esiste
         if (pasticcino[posizione]!=null)
             return -2;  //Posizione occupata
         pasticcino[posizione]=new Pasticcino(p);
         return posizione;
-   }
-    
-    public int getPasticcino(Pasticcino p)
-    {
-        if(nPasticciniPresenti>=N_MAX_PASTICCINI)
-            return -1;
-        else
-        {
-            pasticcino[nPasticciniPresenti]=new Pasticcino (p);
-            nPasticciniPresenti++;
-            return 0;
-        }
     }
     
-    public void eliminaPasticcinoPosizione(int posizione)
+    public Pasticcino getPasticcino(int posizione)
     {
-        for(int i=posizione;i<nPasticciniPresenti-1;i++)
-        {
-            pasticcino[i]=pasticcino[i+1];
-        }
-        pasticcino[nPasticciniPresenti]=null;
-        nPasticciniPresenti--;
+      
+        if (posizione<0 || posizione>=getN_MAX_PASTICCINI())
+            return null; 
+        if (pasticcino[posizione]==null)
+            return null;
+        return new Pasticcino(pasticcino[posizione]); 
+
     }
-    public int eliminaPasticcino(long codiceDaEliminare)
-    {
-        for(int i=0;i<nPasticciniPresenti;i++)
-        {
-            if(pasticcino[i].getCodice()==codiceDaEliminare)
-            {
-                eliminaPasticcinoPosizione(i);
-                return 0;
-            }
-        }
-        return -1;
+
+    public int eliminaPasticcinoPosizione(int posizione)
+    {   
+       
+        if (posizione<0 || posizione>=getN_MAX_PASTICCINI())
+            return -1; //posizione non valida
+        if (pasticcino[posizione]==null)
+            return -2; //posizione vuota
+        pasticcino[posizione]=null;
+        return posizione;
     }
-    
+
+
     public Pasticcino cercaPasticcino(int codiceDaCercare)
     {
         for(int i=0;i<N_MAX_PASTICCINI;i++)
@@ -116,13 +105,58 @@ public class Pasticceria
         }
         return false;
     }
+    public String[] elencoTipoPasticcini(String tipo)
+    {
+        int numeroTipoPasticcini=0;
+        Pasticcino p = null;
+    
+
+        //conto il numero di pasticcini presenti
+     
+        for (int i=0;i<nPasticciniPresenti();i++)
+        {
+            if (pasticcino[i].getTipo()!=null)
+                p=pasticcino[i];
+            if (p.getTipo().equalsIgnoreCase(tipo))
+                numeroTipoPasticcini++;
+        }
+        // se nn ci sono libri di quell'autore, return null
+        if (numeroTipoPasticcini==0)
+            return null;
+        String[] elencoTipoPasticcini=new String[numeroTipoPasticcini];
+
+        int posizioneTipo=0;
+
+        //Assegno ad ogni elemento dell'array il titolo del libro
+        for (int i=0;i<=nPasticciniPresenti;i++)
+        {
+        
+            if (pasticcino[i]!=null)
+                p=pasticcino[i];
+            if (p.getTipo().equalsIgnoreCase(tipo))
+            {
+                elencoTipoPasticcini[posizioneTipo]=p.getTipo();
+                posizioneTipo++;
+            }
+        }
+
+        return elencoTipoPasticcini;
+    }
+
+           
+    
+
+ 
     public String toString()
     {
-        String s;
-        s="";
-        for(int i=0;i<nPasticciniPresenti;i++)
+        String s="";
+        for(int i=0;i<N_MAX_PASTICCINI;i++)
         {
-            s=s+pasticcino[i].toString()+"\n\n";
+            s=s+i+"\t--> ";
+            if (pasticcino[i]!=null)
+                s=s+pasticcino[i].toString()+"\n";
+            else
+                s=s+"\n";
         }
         return s;
     }

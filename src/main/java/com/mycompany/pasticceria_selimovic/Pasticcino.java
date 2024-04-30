@@ -4,6 +4,9 @@
  */
 package com.mycompany.pasticceria_selimovic;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 /**
  *
  * @author selim
@@ -15,6 +18,7 @@ public class Pasticcino
     double costo;
     private static long nextCodice;
     private long codice;
+    private LocalDate dataPreparazione;
     
     public Pasticcino(String tipo, double costo, int quantita,int codice) 
     {
@@ -23,6 +27,7 @@ public class Pasticcino
         setTipo(tipo);
         setCosto(costo);
         setQuantita(quantita);
+        //dataPreparazione=LocalDate.of(codice, Month.MARCH, codice);
     } 
     
     public Pasticcino(Pasticcino pasticcino)
@@ -73,7 +78,7 @@ public class Pasticcino
     
     @Override
     public String toString() {
-        return "Pasticcini{" + ", codice=" + codice+ "tipo=" + tipo +", quantita="+ quantita +", costo="  + costo  + '}';
+        return "Pasticcini: " + " codice=" + codice+ ", tipo=" + tipo +", quantita="+ quantita +", costo="  + costo  + '}';
     }
 
 }
