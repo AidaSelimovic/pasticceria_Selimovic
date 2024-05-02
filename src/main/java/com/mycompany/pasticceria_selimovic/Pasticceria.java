@@ -105,20 +105,22 @@ public class Pasticceria
         }
         return false;
     }
+    
     public String[] elencoTipoPasticcini(String tipo)
     {
         int numeroTipoPasticcini=0;
-        Pasticcino p = null;
-    
+        Pasticcino p;
 
         //conto il numero di pasticcini presenti
      
-        for (int i=0;i<nPasticciniPresenti();i++)
+        for (int i=0;i<N_MAX_PASTICCINI;i++)
         {
-            if (pasticcino[i].getTipo()!=null)
+            if (pasticcino[i]!=null)
+            {
                 p=pasticcino[i];
-            if (p.getTipo().equalsIgnoreCase(tipo))
-                numeroTipoPasticcini++;
+                if (p.getTipo().equalsIgnoreCase(tipo))
+                    numeroTipoPasticcini++;
+            }
         }
         // se nn ci sono libri di quell'autore, return null
         if (numeroTipoPasticcini==0)
@@ -127,26 +129,25 @@ public class Pasticceria
 
         int posizioneTipo=0;
 
-        //Assegno ad ogni elemento dell'array il titolo del libro
-        for (int i=0;i<=nPasticciniPresenti;i++)
+        //Assegno ad ogni elemento dell'array il tipo di pasticcino
+        for (int i=0;i<N_MAX_PASTICCINI;i++)
         {
-        
             if (pasticcino[i]!=null)
-                p=pasticcino[i];
-            if (p.getTipo().equalsIgnoreCase(tipo))
             {
-                elencoTipoPasticcini[posizioneTipo]=p.getTipo();
-                posizioneTipo++;
+                p=pasticcino[i];
+                if (p.getTipo().equalsIgnoreCase(tipo))
+                {
+                    elencoTipoPasticcini[posizioneTipo]=p.getTipo();
+                    posizioneTipo++;
+                }
             }
         }
 
         return elencoTipoPasticcini;
     }
 
-           
+   
     
-
- 
     public String toString()
     {
         String s="";
