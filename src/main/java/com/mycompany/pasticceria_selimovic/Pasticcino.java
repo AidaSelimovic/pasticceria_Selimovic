@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.time.Month;
 
 /**
- *
- * @author selim
+ *Claase che rappresenta un pasticcino
+ * @author selimovic aida
  */
 public class Pasticcino 
 {
@@ -20,6 +20,13 @@ public class Pasticcino
     private long codice;
     private LocalDate dataPreparazione;
     
+    /**
+     * Metodo costruttore
+     * @param tipo tipo del pasticcino
+     * @param costo prezzo del pasticcino (0.50 € a pasticcino)
+     * @param quantita quantità che si desidera di un certo tipo di pasticcino
+     * @param codice codice di ogni ordine che viene ricevuto
+     */
     public Pasticcino(String tipo, double costo, int quantita,int codice) 
     {
         this.codice=nextCodice; 
@@ -30,6 +37,10 @@ public class Pasticcino
         //dataPreparazione=LocalDate.of(codice, Month.MARCH, codice);
     } 
     
+    /**
+     * Costruttore di copia
+     * @param pasticcino il pasticcino da copiare
+     */
     public Pasticcino(Pasticcino pasticcino)
     {
         codice=pasticcino.getCodice();
@@ -38,44 +49,76 @@ public class Pasticcino
         quantita=pasticcino.getQuantita();
     }
    
+    /**
+     * 
+     * @return il tipo di pasticcino
+     */
     public String getTipo() 
     {
         return tipo;
     }
 
+    /**
+     * Assegna un tipo al pasticcino
+     * @param tipo 
+     */
     public void setTipo(String tipo) 
     {
         this.tipo = tipo;
     }
 
+    /**
+     * Calcola il costo della quantità di pasticcini desiderata (0.50€ a pasticcino)
+     * @return costo
+     */
     public double getCosto() 
     {
         double costo;
         costo=0.50*quantita;
         return costo;
     }
-
+    
+    /**
+     * 
+     * @param costo 
+     */
     public void setCosto(double costo) 
     {
         
         this.costo = costo;
     }
-
+    
+    /**
+     * 
+     * @return la quantità per ogni tipo di pasticcino
+     */
     public int getQuantita() 
     {
         return quantita;
     }
 
+    /**
+     * Assegna la quantià ad ogni pasticcino
+     * @param quantita
+     */
     public void setQuantita(int quantita) 
     {
         this.quantita = quantita;
     }
 
+    /**
+     * 
+     * @return il codice (univoco per ogi pasticcino)
+     */
     public long getCodice() 
     {
         return  codice;
     }
     
+    /**
+     * 
+     * @return il libro sotto forma di testo
+     */
     @Override
     public String toString() {
         return "Pasticcini: " + " codice=" + codice+ ", tipo=" + tipo +", quantita="+ quantita +", costo="  + costo  + '}';

@@ -4,12 +4,12 @@
 
 package com.mycompany.pasticceria_selimovic;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import utilita.*;
+import eccezioni.*;
 
 /**
  *
@@ -17,10 +17,10 @@ import utilita.*;
  */
 public class Pasticceria_Selimovic {
 
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     {
         String[] vociMenu;
-        int numeroVoci=7;
+        int numeroVoci=11;
         vociMenu=new String[numeroVoci];
         Menu menu;
         int voceScelta = 0;
@@ -31,9 +31,10 @@ public class Pasticceria_Selimovic {
         int quantita;
         long codice = 0;
         double costo = 0;
-        Pasticcino p;
+        Pasticcino p = null;
         int posizione = 0;
         String[] elencoTipoPasticcini = null;
+        Pasticcino[] pasticciniPresenti;
         
         
         vociMenu[0]="0\t--> Esci";
@@ -43,7 +44,11 @@ public class Pasticceria_Selimovic {
         vociMenu[4]="4\t--> Elimina pasticcino (posizione)";
         vociMenu[5]="5\t--> Mostra pasticcino di un certo tipo";
         vociMenu[6]="6\t--> Mostra pasticcini presenti in ordine crescente di prezzo";
-        
+        vociMenu[6]="7\t--> Mostra pasticcini presenti in ordine alfabetico di tipo";
+        vociMenu[7]="8\t--> Esporta i pasticcini su file CSV";
+        vociMenu[8]="9\t--> Importa i pasticcini da file CSV";
+        vociMenu[9]="10\t--> Salva dati pasticceria";
+        vociMenu[10]="11\t--> Carica dati pasticceria";
         
         menu=new Menu(vociMenu);
         
@@ -60,81 +65,128 @@ public class Pasticceria_Selimovic {
                     System.out.println(p1.toString());
                     break;
                 case 2:
-
                     try 
                     {
                         System.out.println("Tipo --> ");
                         tipo=tastiera.readString();
-                        System.out.println("Quantità --> ");
-                        quantita=tastiera.readInt();
-                        System.out.println("Posizione (0..19) --> ");
-                        posizione=tastiera.readInt();    
-                        esito=p1.setPasticcino(new Pasticcino(tipo, costo, quantita, (int) codice), posizione);
-                        if(esito==-1)
-                            System.out.println("Posizione inesistente");
-                        else if(esito==-2)
-                            System.out.println("Posizione già occupata");
-                        else
+                        do
+                        {
+                            try
+                            {
+                                System.out.println("Quantità --> ");
+                                quantita=tastiera.readInt();
+                                break;
+                            }
+                            catch(NumberFormatException ex)
+                            {
+                                System.out.println("Formato non corretto, devi inserire un numero");
+                            }
+                        }while(true);
+                        do
+                        {
+                            try
+                            {
+                                System.out.println("Posizione (0..19) --> ");
+                                posizione=tastiera.readInt();   
+                                break;
+                            }
+                            catch (NumberFormatException ex) 
+                            {
+                                System.out.println("Formato non corretto");
+                            }
+                            
+                        }while(true);
+                        try
+                        {
+                            p1.setPasticcino(new Pasticcino(tipo, costo, quantita, (int) codice), posizione);
                             System.out.println("Pasticcino aggiunto correttamente");
-                    } 
-                    catch (IOException ex) 
-                    {
-                        System.out.println("Impossbile leggere da tastiera");
+                        }
+                        catch (EccezionePosizioneNonValida ex) 
+                        {
+                            System.out.println("Posizione non valida");
+                        }
+                        catch (EccezionePosizioneOccupata e) 
+                        {
+                            System.out.println("Posizione già occupata");
+                        }
                     }
-                    catch (NumberFormatException ex) 
-                    {
-                        System.out.println("Formato non corretto");
-                    }
-
+                        catch (NumberFormatException ex) 
+                        {
+                            System.out.println("Formato non corretto");
+                        }
+                    
                     break;
 
                 case 3:
-                    System.out.println("Posizione (0..19) --> ");
-                  
-                    try 
+                    try
                     {
-                        posizione=tastiera.readInt();
-                    } 
-                    catch (IOException ex) 
-                    {
-                        System.out.println("Impossibile leggere da file");
-                    } 
-                    catch (NumberFormatException ex) 
-                    {
-                        System.out.println("Formato non corretto");
-                    }
-                
-                    p=p1.getPasticcino(posizione);
-                    if (p==null)
-                        System.out.println("Pasticcino non trovato!");
-                    else
+                        do
+                        {
+                            try 
+                            {
+                                System.out.println("Posizione (0..19) --> ");
+                                posizione=tastiera.readInt();
+                                break;
+                            } 
+                            catch (IOException ex) 
+                            {
+                                System.out.println("Impossibile leggere da file");
+                            } 
+                            catch (NumberFormatException ex) 
+                            {
+                                System.out.println("Formato non corretto");
+                            }
+
+                        }while(true);
+                        p1.getPasticcino(posizione);
                         System.out.println("Pasticcino cercato: "+p.toString());
+                    }    
+                    catch (EccezionePosizioneNonValida ex) 
+                    {
+                        System.out.println("Posizione non valida");
+                    } 
+                    catch (EccezionePosizioneVuota ex) 
+                    {
+                        System.out.println("Posizione vuota");
+                    }
                     break;
 
+
                 case 4:
-                    System.out.println("Posizione pasticcino da eliminare --> ");
-                
-                    try 
+                    try
                     {
-                        posizione=tastiera.readInt();
-                    } 
-                    catch (IOException ex) 
-                    {
-                        System.out.println("Impossibile leggere da tastoera");
-                    } 
-                    catch (NumberFormatException ex) 
-                    {
-                        System.out.println("Formato non corretto");
+                        do
+                        {
+                            try 
+                            {
+                                System.out.println("Posizione (0..19) --> ");
+                                posizione=tastiera.readInt();
+                                break;
+                            } 
+                            catch (IOException ex) 
+                            {
+                                System.out.println("Impossibile leggere da file");
+                            } 
+                            catch (NumberFormatException ex) 
+                            {
+                                System.out.println("Formato non corretto");
+                            }
+
+                        }while(true);
+                        p1.eliminaPasticcinoPosizione(posizione);
+                        System.out.println("Pasticcino rimosso corretamente");
                     }
-                
-                    esito=p1.eliminaPasticcinoPosizione(posizione);
-                    if(esito==-1)
-                        System.out.println("Posizione inesistente");
-                    else if(esito==-2)
-                        System.out.println("Posizione già vuota. Nessun pasticcino è stato rimosso.");
-                    else
-                        System.out.println("Pasticcino rimosso correttamente");
+                    catch(EccezionePosizioneNonValida e)
+                    {
+                        System.out.println("Posizione non valida");
+                    }
+                    catch (EccezionePosizioneVuota ex) 
+                    {
+                          System.out.println("Posizione già vuota. Nessun pasticcino è stato rimosso.");
+                    }
+                   
                     break;
+
 
                 case 5:
 
@@ -165,6 +217,14 @@ public class Pasticceria_Selimovic {
                     }
            
                     break;   
+                case 6:
+                    pasticciniPresenti=p1.elencoPasticciniPresenti();
+                    pasticciniPresenti=Ordinatore.selectionSortCrescenteLibri(pasticciniPresenti);
+                    for(int i=0;i<pasticciniPresenti.length;i++)
+                    {
+                        System.out.println(pasticciniPresenti[i].toString());
+                    }
+                    break;
 
                 
             }
