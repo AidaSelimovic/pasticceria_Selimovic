@@ -35,7 +35,8 @@ public class Pasticceria_Selimovic {
         int posizione = 0;
         String[] elencoTipoPasticcini = null;
         Pasticcino[] pasticciniPresenti;
-        
+        String nomeFile="pasticcini.csv";
+        String nomeFileBinario="pasticceria.bin";
         
         vociMenu[0]="0\t--> Esci";
         vociMenu[1]="1\t--> Visualizza tutti i pasticcini presenti";
@@ -43,12 +44,11 @@ public class Pasticceria_Selimovic {
         vociMenu[3]="3\t--> Visualizza pasticcino (posizione) ";
         vociMenu[4]="4\t--> Elimina pasticcino (posizione)";
         vociMenu[5]="5\t--> Mostra pasticcino di un certo tipo";
-        vociMenu[6]="6\t--> Mostra pasticcini presenti in ordine crescente di prezzo";
-        vociMenu[6]="7\t--> Mostra pasticcini presenti in ordine alfabetico di tipo";
-        vociMenu[7]="8\t--> Esporta i pasticcini su file CSV";
-        vociMenu[8]="9\t--> Importa i pasticcini da file CSV";
-        vociMenu[9]="10\t--> Salva dati pasticceria";
-        vociMenu[10]="11\t--> Carica dati pasticceria";
+        vociMenu[6]="6\t--> Mostra pasticcini presenti in ordine alfabetico di tipo";
+        vociMenu[7]="7\t--> Esporta i pasticcini su file CSV";
+        vociMenu[8]="8\t--> Importa i pasticcini da file CSV";
+        vociMenu[9]="9\t--> Salva dati pasticceria";
+        vociMenu[10]="10\t--> Carica dati pasticceria";
         
         menu=new Menu(vociMenu);
         
@@ -225,9 +225,64 @@ public class Pasticceria_Selimovic {
                         System.out.println(pasticciniPresenti[i].toString());
                     }
                     break;
-
+                case 7: //esporta su file CSV
+                    try 
+                    {
+                        p1.esportaCSV(nomeFile);
+                        System.out.println("Esportazione avvenuta con successo!");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Errore di scrittura, impossibile accedere al file");
+                    } 
+                    catch (FileException ex) 
+                    {
+                        System.out.println("Errore file aperto in lettura!");
+                    }
+                    break;
                 
-            }
+                case 8:              
+                    try 
+                    {
+                        p1.importaCSV(nomeFile);
+                        System.out.println("Importazione avvenuta con successo.");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere dal file");
+                    } 
+                    break;
+                case 9:
+                    try
+                    {
+                       
+                        p1.salvaPasticceria(nomeFileBinario);
+                        System.out.println("Salvataggio avvenuto correttamente");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile salvare su file");
+                    }
+                    break;
+                case 10: 
+                    try 
+                    {
+                        //carica pasticceria
+                        p1=p1.caricaPasticceria(nomeFileBinario);
+                        System.out.println("Caricamento avvenuto con successo");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere da file");
+                    } 
+                    catch (ClassNotFoundException ex) 
+                    {
+                        System.out.println("Impossibile leggere i dati dello scaffale");
+                    }
+
+                    break;
+            }  
+       
         }while(voceScelta!=0);
     }
 }

@@ -16,8 +16,8 @@ public class Pasticcino
     private String tipo;
     private int quantita;
     double costo;
-    private static long nextCodice;
-    private long codice;
+    private static int nextCodice;
+    private int codice;
     private LocalDate dataPreparazione;
     
     /**
@@ -110,7 +110,7 @@ public class Pasticcino
      * 
      * @return il codice (univoco per ogi pasticcino)
      */
-    public long getCodice() 
+    public int getCodice() 
     {
         return  codice;
     }
@@ -121,7 +121,7 @@ public class Pasticcino
      */
     @Override
     public String toString() {
-        return "Pasticcini: " + " codice=" + codice+ ", tipo=" + tipo +", quantita="+ quantita +", costo="  + costo  + '}';
+        return "Pasticcini: " + " codice=" + codice+ ", tipo=" + tipo +", quantita="+ quantita +", costo= €"  + costo  + '}';
     }
 
 }

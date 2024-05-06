@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>63</y>
+      <w>144</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Aggiunge i pasticcini 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>189</y>
+      <w>144</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Elimina i pasticcini</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>0</x>
+      <y>198</y>
+      <w>54</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Utente</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>0</y>
+      <w>144</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Visualizza tutti 
+i pasticcini presenti</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>126</y>
+      <w>153</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Visualizza un pasticcino</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>144</y>
+      <w>90</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;100.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>207</y>
+      <w>90</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;30.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>18</y>
+      <w>90</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;240.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>81</y>
+      <w>90</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;170.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>369</x>
+      <y>135</y>
+      <w>342</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>Pasticcino
+--
+-codice: int
+_-nextCodice: int_
+-tipo: String
+-quantita: int
+-costo: double
+-dataPreparazione: LocalDate
+--
++Pasticcino(tipo: String, costo: double, quantita: int, codice)
++Pasticcino(Pasticcino pasticcino)
++getTipo(): String
++setTipo(tipo: String): void
++getCosto(): double
++setCosto(costo: double): void
++getQuantita(): int
++setQuantita(quantita: int): void
++getCodice(): int
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>135</y>
+      <w>297</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>Pasticceria
+--
+-N_MAX_PASTICCINI: int
+-nPasticciniPresenti: int
+--
++Pasticceria()
++Pasticceria(Pasticceria pasticceria)
++getN_MAX_PASTICCINI(): int
++nPasticciniPresenti(): int
++setPasticcino(Pasticcino p, posizione: int): void
++getPasticcino(posizione: int): Pasticcino
++eliminaPasticcinoPosizione(posizione: int):void
++cercaPasticcino(codiceDaCercare: int): Pasticcino
++presenzaTipo(tipo: String): boolean
++elencoTipoPasticcini(tipo: String): String[ ]
++elencoPasticciniPresenti(): Pasticcino[ ]
++toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>702</x>
+      <y>252</y>
+      <w>252</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+-Pasticcino[ ] pasticcino
+m1=0..19
+m2=1</panel_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>108</x>
+      <y>252</y>
+      <w>162</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Visualizza tutti i pasticcini
+di un certo tipo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>108</x>
+      <y>315</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Visualizza i pasticcini 
+presenti in ordine alfabetico</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>378</y>
+      <w>153</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Esporta i pasticcini
+su file CSV</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>567</y>
+      <w>144</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Carica i dati della
+pasticceria</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>504</y>
+      <w>153</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Salva i dati della
+pasticceria</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>117</x>
+      <y>441</y>
+      <w>153</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Importa i pasticcini
+da file CSV</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>225</y>
+      <w>90</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;80.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>225</y>
+      <w>81</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;70.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>225</y>
+      <w>90</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;80.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>225</y>
+      <w>90</w>
+      <h>387</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;80.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>225</y>
+      <w>81</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;70.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>225</y>
+      <w>90</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;80.0;340.0</additional_attributes>
+  </element>
+</diagram>

@@ -10,16 +10,20 @@ import eccezioni.*;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utilita.TextFile;
 /**
  *
  * @author selimovic aida
  */
-public class Pasticceria 
+public class Pasticceria implements Serializable
 {
     private Pasticcino[] pasticcino;
     private final int N_MAX_PASTICCINI=20;
     int nPasticciniPresenti;
     
+    /**
+     * Costruttore
+     */
     public Pasticceria()
     {
         pasticcino=new Pasticcino[N_MAX_PASTICCINI];
@@ -43,13 +47,19 @@ public class Pasticceria
         
     }
     
-    
+    /**
+     * 
+     * @return il numero massimo di pasticcini che la pasticceria può contenere 
+     */
     public int getN_MAX_PASTICCINI()
     {
         return N_MAX_PASTICCINI;
     }
     
-    
+    /**
+     * 
+     * @return il numero di pasticcini presenti nella pasticceria
+     */
     public int nPasticciniPresenti()
     {
         int contatore=0;
@@ -253,10 +263,124 @@ public class Pasticceria
         
         return elencoPasticciniPresenti;
     }
+    
+    /**
+     * Metodo che consente di esportare i pasticcini su un file CSV
+     * @param fileName nome del file CSv
+     * @throws IOException
+     * @throws FileException 
+     */
+    public void esportaCSV(String fileName) throws IOException, FileException
+    {
+        TextFile f1=new TextFile(fileName,'W');
+        Pasticcino p;
+        String datiPasticcino;
+       
+       
+            for(int i=0;i<N_MAX_PASTICCINI;i++)
+            {
+               try 
+                {
+                    p=this.getPasticcino(i);
+                    datiPasticcino=i+";"+p.getCodice()+";"+p.getTipo()+";"+p.getQuantita()+";"+p.getCosto()+";";
+                    f1.toFile(datiPasticcino);    
+                } 
+                catch (EccezionePosizioneNonValida ex) 
+                {
+                    //non succederà mai
+                } 
+                catch (EccezionePosizioneVuota ex) 
+                {
+                    //non fare nulla.
+                }
+            }
+       
+        f1.close();
+    }
+   
+    /**
+     * Metodo che importa i pasticcini da file CSV 
+     * @param fileName
+     * @throws IOException 
+     */
+    public void importaCSV(String fileName) throws IOException
+    {
+       TextFile f1=new TextFile(fileName, 'R');
+       String rigaLetta;
+       String[] datiPasticcino;
+       String tipo;
+       int codice, quantita;
+       double costo;
+       Pasticcino p;
+       
+        try 
+        {
+            while(true)
+            {
+                rigaLetta=f1.fromFile();
+                datiPasticcino=rigaLetta.split(";");
+                codice=Integer.parseInt(datiPasticcino[0]);
+                tipo=datiPasticcino[2];
+                quantita=Integer.parseInt(datiPasticcino[1]);
+                costo=Integer.parseInt(datiPasticcino[3]);
+                p=new Pasticcino(tipo, costo, quantita, codice);
+                try 
+                {
+                    this.setPasticcino(p, codice);
+                } 
+                catch (EccezionePosizioneNonValida ex) 
+                {
+                    //non fa nulla, il libro non viene messo nello scaffale
+                } 
+                catch (EccezionePosizioneOccupata ex) 
+                {
+                    //non fa nulla, il libro non viene messo nello scaffale
+                }
+            } 
+        } 
+        catch (FileException ex) 
+        {
+            //E' finito il file di testo
+            f1.close();
+        }
+       
+    }
+   
+    /**
+     * Metodo che salva i dati della pasticceria
+     * @param fileName nome del file binario
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
+    public void salvaPasticceria(String fileName) throws FileNotFoundException, IOException
+    {
+       ObjectOutputStream writer=new ObjectOutputStream(new FileOutputStream(fileName));
+       writer.writeObject(this);
+       writer.flush();
+       writer.close();
+    }
+   
+    /**
+     * Metodo che carica da  file binario i dati della pasticceria
+     * @param fileName noe del file binario
+     * @return la pasticceria contenente i pasticcini
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
+    public Pasticceria caricaPasticceria(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException
+    {
+       Pasticceria p1;
+       ObjectInputStream reader=new ObjectInputStream(new FileInputStream(fileName));
+       p1=(Pasticceria)reader.readObject();
+       reader.close();
+       return p1;
+    }
+    
    
     /**
      * Mostra ogni posizione con l'eventuale pasticcino contenuto
-     * @return 
+     * @return
      */
     public String toString()
     {
