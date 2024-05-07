@@ -323,7 +323,7 @@ public class Pasticceria implements Serializable
                 tipo=datiPasticcino[2];
                 quantita=Integer.parseInt(datiPasticcino[1]);
                 costo=Integer.parseInt(datiPasticcino[3]);
-                p=new Pasticcino(tipo, costo, quantita, codice);
+                p=new Pasticcino(tipo, quantita, codice);
                 try 
                 {
                     this.setPasticcino(p, codice);

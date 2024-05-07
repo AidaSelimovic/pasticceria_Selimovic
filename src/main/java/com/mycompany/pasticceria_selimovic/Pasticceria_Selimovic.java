@@ -98,7 +98,7 @@ public class Pasticceria_Selimovic {
                         }while(true);
                         try
                         {
-                            p1.setPasticcino(new Pasticcino(tipo, costo, quantita, (int) codice), posizione);
+                            p1.setPasticcino(new Pasticcino(tipo, quantita, (int) codice), posizione);
                             System.out.println("Pasticcino aggiunto correttamente");
                         }
                         catch (EccezionePosizioneNonValida ex) 

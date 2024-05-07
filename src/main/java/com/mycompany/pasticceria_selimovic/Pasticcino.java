@@ -23,16 +23,14 @@ public class Pasticcino
     /**
      * Metodo costruttore
      * @param tipo tipo del pasticcino
-     * @param costo prezzo del pasticcino (0.50 € a pasticcino)
      * @param quantita quantità che si desidera di un certo tipo di pasticcino
      * @param codice codice di ogni ordine che viene ricevuto
      */
-    public Pasticcino(String tipo, double costo, int quantita,int codice) 
+    public Pasticcino(String tipo, int quantita,int codice) 
     {
         this.codice=nextCodice; 
         nextCodice++; 
         setTipo(tipo);
-        setCosto(costo);
         setQuantita(quantita);
         //dataPreparazione=LocalDate.of(codice, Month.MARCH, codice);
     } 
@@ -45,7 +43,6 @@ public class Pasticcino
     {
         codice=pasticcino.getCodice();
         tipo=pasticcino.getTipo();
-        costo=pasticcino.getCosto();
         quantita=pasticcino.getQuantita();
     }
    
@@ -76,16 +73,6 @@ public class Pasticcino
         double costo;
         costo=0.50*quantita;
         return costo;
-    }
-    
-    /**
-     * 
-     * @param costo 
-     */
-    public void setCosto(double costo) 
-    {
-        
-        this.costo = costo;
     }
     
     /**
