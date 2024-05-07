@@ -38,6 +38,11 @@ public class Pasticceria_Selimovic {
         String nomeFile="pasticcini.csv";
         String nomeFileBinario="pasticceria.bin";
         
+        /*Pasticcino p1=new Pasticcino("bigne", 2, 0);
+        Pasticcino p2=new Pasticcino("bigne", 2, 0);
+        
+        System.out.println(p1.equals(p2));*/
+        
         vociMenu[0]="0\t--> Esci";
         vociMenu[1]="1\t--> Visualizza tutti i pasticcini presenti";
         vociMenu[2]="2\t--> Aggiungi pasticcino";
@@ -138,7 +143,7 @@ public class Pasticceria_Selimovic {
                             }
 
                         }while(true);
-                        p1.getPasticcino(posizione);
+                        p=p1.getPasticcino(posizione);
                         System.out.println("Pasticcino cercato: "+p.toString());
                     }    
                     catch (EccezionePosizioneNonValida ex) 
@@ -268,7 +273,7 @@ public class Pasticceria_Selimovic {
                     try 
                     {
                         //carica pasticceria
-                        p1=p1.caricaPasticceria(nomeFileBinario);
+                        p1.caricaPasticceria(nomeFileBinario);
                         System.out.println("Caricamento avvenuto con successo");
                     } 
                     catch (IOException ex) 
@@ -277,7 +282,7 @@ public class Pasticceria_Selimovic {
                     } 
                     catch (ClassNotFoundException ex) 
                     {
-                        System.out.println("Impossibile leggere i dati dello scaffale");
+                        System.out.println("Impossibile leggere i dati della pasticceria");
                     }
 
                     break;

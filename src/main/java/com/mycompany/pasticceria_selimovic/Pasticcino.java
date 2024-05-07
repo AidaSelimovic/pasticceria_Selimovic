@@ -101,7 +101,16 @@ public class Pasticcino
     {
         return  codice;
     }
-    
+    @Override
+    public boolean equals(Object o)
+    {
+        Pasticcino p;
+        p=(Pasticcino)o;
+        if(p.getTipo()==getTipo() && p.getCodice()==getCodice() && p.getQuantita()==getQuantita())
+            return true;
+        else
+            return false;
+    }
     /**
      * 
      * @return il libro sotto forma di testo
