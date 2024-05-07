@@ -18,13 +18,14 @@ public class Pasticcino
     double costo;
     private static int nextCodice;
     private int codice;
-    private LocalDate dataPreparazione;
+    
     
     /**
      * Metodo costruttore
      * @param tipo tipo del pasticcino
      * @param quantita quantità che si desidera di un certo tipo di pasticcino
      * @param codice codice di ogni ordine che viene ricevuto
+    
      */
     public Pasticcino(String tipo, int quantita,int codice) 
     {
@@ -44,6 +45,7 @@ public class Pasticcino
         codice=pasticcino.getCodice();
         tipo=pasticcino.getTipo();
         quantita=pasticcino.getQuantita();
+        
     }
    
     /**
@@ -71,7 +73,7 @@ public class Pasticcino
     public double getCosto() 
     {
         double costo;
-        costo=0.50*quantita;
+        costo=0.50*this.quantita;
         return costo;
     }
     
@@ -101,12 +103,16 @@ public class Pasticcino
     {
         return  codice;
     }
+    
+    
+    
+    
     @Override
     public boolean equals(Object o)
     {
         Pasticcino p;
         p=(Pasticcino)o;
-        if(p.getTipo()==getTipo() && p.getCodice()==getCodice() && p.getQuantita()==getQuantita())
+        if(p.getTipo()==getTipo() && p.getCodice()==getCodice() && p.getQuantita()==getQuantita() &&p.getCosto()==getCosto())
             return true;
         else
             return false;
@@ -116,8 +122,11 @@ public class Pasticcino
      * @return il libro sotto forma di testo
      */
     @Override
-    public String toString() {
-        return "Pasticcini: " + " codice=" + codice+ ", tipo=" + tipo +", quantita="+ quantita +", costo= €"  + costo  + '}';
+    public String toString() 
+    {
+        String s;
+        s="Pasticcino--> "+getTipo()+";"+getQuantita()+";"+getCosto()+" €";
+        return s;
     }
 
 }

@@ -4,9 +4,7 @@
  */
 package com.mycompany.pasticceria_selimovic;
 
-import eccezioni.EccezionePosizioneNonValida;
-import eccezioni.EccezionePosizioneOccupata;
-import eccezioni.EccezionePosizioneVuota;
+import eccezioni.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,24 +30,42 @@ public class PasticceriaTest {
         assertEquals(p1,pasticceria1.getPasticcino(0));
     }
     
+    
     /**
      * Test of getN_MAX_PASTICCINI method, of class Pasticceria.
      */
     @Test
-    public void testGetN_MAX_PASTICCINI() 
+    public void testGetN_MAX_PASTICCINI() throws EccezionePosizioneNonValida, EccezionePosizioneOccupata 
     {
+        Pasticceria pasticceria1=new Pasticceria();
+        Pasticcino p1=new Pasticcino("bigne", 2, 0);
+        pasticceria1.setPasticcino(p1, 0);
+        Pasticcino p2=new Pasticcino("cannoncino", 4, 1);
+        pasticceria1.setPasticcino(p2, 1);
+        int posizione=0;
+        //String atteso=p1.getTipo();
         
+        
+        assertEquals(20,pasticceria1.getN_MAX_PASTICCINI());
     }
 
     /**
      * Test of nPasticciniPresenti method, of class Pasticceria.
      */
     @Test
-    public void testNPasticciniPresenti() 
+    public void testNPasticciniPresenti() throws EccezionePosizioneNonValida, EccezionePosizioneOccupata 
     {
+        Pasticceria pasticceria1=new Pasticceria();
+        Pasticcino p1=new Pasticcino("bigne", 2, 0);
+        pasticceria1.setPasticcino(p1, 0);
+        Pasticcino p2=new Pasticcino("cannoncino", 4, 1);
+        pasticceria1.setPasticcino(p2, 1);
+        int posizione=0;
+        //String atteso=p1.getTipo();
         
+        
+        assertEquals(2,pasticceria1.nPasticciniPresenti());
     }
-
     /**
      * Test of setPasticcino method, of class Pasticceria.
      */
@@ -69,8 +85,8 @@ public class PasticceriaTest {
     {
         Pasticceria pasticceria1=new Pasticceria();
         Pasticcino p1=new Pasticcino("bigne", 2, 0);
-        //pasticceria1.setPasticcino(p1, -1);
-        //assertEquals(p1,pasticceria1.setPasticcino(p1, -1));
+        pasticceria1.setPasticcino(p1, -1);
+        //assertEquals(EccezionePosizioneNonValida,p1);
     }
     /**
      * Test of setPasticcino method, of class Pasticceria.
@@ -177,7 +193,7 @@ public class PasticceriaTest {
         Pasticcino p2=new Pasticcino("cannoncino", 4, 1);
         pasticceria1.setPasticcino(p2, 5);
         String s=pasticceria1.toString();
-        assertEquals(pasticceria1.toString(), s);
+        assertEquals(s, pasticceria1.toString());
     }
     
 }

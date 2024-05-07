@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilita.*;
 import eccezioni.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 /**
  *
@@ -30,7 +32,7 @@ public class Pasticceria_Selimovic {
         String tipo = null;
         int quantita;
         long codice = 0;
-        double costo = 0;
+        
         Pasticcino p = null;
         int posizione = 0;
         String[] elencoTipoPasticcini = null;
@@ -101,6 +103,7 @@ public class Pasticceria_Selimovic {
                             }
                             
                         }while(true);
+                        
                         try
                         {
                             p1.setPasticcino(new Pasticcino(tipo, quantita, (int) codice), posizione);

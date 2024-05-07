@@ -8,6 +8,7 @@ package com.mycompany.pasticceria_selimovic;
 
 import eccezioni.*;
 import java.io.*;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilita.TextFile;
@@ -309,8 +310,9 @@ public class Pasticceria implements Serializable
        String rigaLetta;
        String[] datiPasticcino;
        String tipo;
-       int codice, quantita;
+       int codice, quantita,posizione = 0;
        double costo;
+       LocalDate dataPreparazione;
        Pasticcino p;
        
         try 
@@ -323,10 +325,11 @@ public class Pasticceria implements Serializable
                 tipo=datiPasticcino[2];
                 quantita=Integer.parseInt(datiPasticcino[1]);
                 costo=Integer.parseInt(datiPasticcino[3]);
+                dataPreparazione=LocalDate.parse(datiPasticcino[4]);
                 p=new Pasticcino(tipo, quantita, codice);
                 try 
                 {
-                    this.setPasticcino(p, codice);
+                    this.setPasticcino(p, posizione);
                 } 
                 catch (EccezionePosizioneNonValida ex) 
                 {

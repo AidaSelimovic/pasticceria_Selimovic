@@ -6,6 +6,7 @@ package com.mycompany.pasticceria_selimovic;
 
 import eccezioni.EccezionePosizioneNonValida;
 import eccezioni.EccezionePosizioneOccupata;
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,6 +29,7 @@ public class PasticcinoTest {
     @org.junit.jupiter.api.Test
     public void testCostruttoreQuantitaNegativa()
     {
+       
         Pasticcino p1=new Pasticcino("bigne", -2, 0);
         int posizione=0;
         //Pasticcino atteso=p1;
@@ -42,6 +44,7 @@ public class PasticcinoTest {
     @org.junit.jupiter.api.Test
     public void testCostruttore() 
     {
+        
         Pasticcino p2=new Pasticcino("bigne", 2, 0);
         int posizione=0;
         //Pasticcino atteso=p1;
@@ -55,6 +58,7 @@ public class PasticcinoTest {
     @org.junit.jupiter.api.Test
     public void testCostruttoreCopia() 
     {
+        
         Pasticcino p3=new Pasticcino("bigne", 2, 0);
         int posizione=0;
         Pasticcino p4=new Pasticcino(p3);
@@ -106,7 +110,6 @@ public class PasticcinoTest {
         int posizione=0;
         p8.setTipo("cannoncino");
         String attuale=p8.getTipo();
-        
         assertEquals("cannoncino",attuale);
         
     }

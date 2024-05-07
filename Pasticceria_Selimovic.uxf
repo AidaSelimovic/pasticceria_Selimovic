@@ -5,7 +5,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>63</y>
+      <y>126</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -17,7 +17,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>189</y>
+      <y>252</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -28,7 +28,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>0</x>
-      <y>198</y>
+      <y>261</y>
       <w>54</w>
       <h>99</h>
     </coordinates>
@@ -39,7 +39,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>0</y>
+      <y>63</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -51,7 +51,7 @@ i pasticcini presenti</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>126</y>
+      <y>189</y>
       <w>153</w>
       <h>54</h>
     </coordinates>
@@ -62,7 +62,7 @@ i pasticcini presenti</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>144</y>
+      <y>207</y>
       <w>90</w>
       <h>108</h>
     </coordinates>
@@ -73,7 +73,7 @@ i pasticcini presenti</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>207</y>
+      <y>270</y>
       <w>90</w>
       <h>45</h>
     </coordinates>
@@ -84,7 +84,7 @@ i pasticcini presenti</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>18</y>
+      <y>81</y>
       <w>90</w>
       <h>234</h>
     </coordinates>
@@ -95,7 +95,7 @@ i pasticcini presenti</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>81</y>
+      <y>144</y>
       <w>90</w>
       <h>171</h>
     </coordinates>
@@ -105,43 +105,14 @@ i pasticcini presenti</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>369</x>
-      <y>135</y>
-      <w>342</w>
-      <h>270</h>
-    </coordinates>
-    <panel_attributes>Pasticcino
---
--codice: int
-_-nextCodice: int_
--tipo: String
--quantita: int
--costo: double
--dataPreparazione: LocalDate
---
-+Pasticcino(tipo: String, costo: double, quantita: int, codice)
-+Pasticcino(Pasticcino pasticcino)
-+getTipo(): String
-+setTipo(tipo: String): void
-+getCosto(): double
-+setCosto(costo: double): void
-+getQuantita(): int
-+setQuantita(quantita: int): void
-+getCodice(): int
-+toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>936</x>
-      <y>135</y>
+      <y>198</y>
       <w>297</w>
       <h>252</h>
     </coordinates>
     <panel_attributes>Pasticceria
 --
--N_MAX_PASTICCINI: int
+-N_MAX_PASTICCINI=20: int
 -nPasticciniPresenti: int
 --
 +Pasticceria()
@@ -163,7 +134,7 @@ _-nextCodice: int_
     <id>Relation</id>
     <coordinates>
       <x>702</x>
-      <y>252</y>
+      <y>315</y>
       <w>252</w>
       <h>45</h>
     </coordinates>
@@ -177,7 +148,7 @@ m2=1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>108</x>
-      <y>252</y>
+      <y>315</y>
       <w>162</w>
       <h>54</h>
     </coordinates>
@@ -189,7 +160,7 @@ di un certo tipo</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>108</x>
-      <y>315</y>
+      <y>378</y>
       <w>180</w>
       <h>54</h>
     </coordinates>
@@ -201,7 +172,7 @@ presenti in ordine alfabetico</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>378</y>
+      <y>441</y>
       <w>153</w>
       <h>54</h>
     </coordinates>
@@ -213,7 +184,7 @@ su file CSV</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>567</y>
+      <y>630</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -225,7 +196,7 @@ pasticceria</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>504</y>
+      <y>567</y>
       <w>153</w>
       <h>54</h>
     </coordinates>
@@ -237,7 +208,7 @@ pasticceria</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>117</x>
-      <y>441</y>
+      <y>504</y>
       <w>153</w>
       <h>54</h>
     </coordinates>
@@ -249,7 +220,7 @@ da file CSV</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>225</y>
+      <y>288</y>
       <w>90</w>
       <h>198</h>
     </coordinates>
@@ -260,7 +231,7 @@ da file CSV</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>225</y>
+      <y>288</y>
       <w>81</w>
       <h>72</h>
     </coordinates>
@@ -271,7 +242,7 @@ da file CSV</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>225</y>
+      <y>288</y>
       <w>90</w>
       <h>261</h>
     </coordinates>
@@ -282,7 +253,7 @@ da file CSV</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>225</y>
+      <y>288</y>
       <w>90</w>
       <h>387</h>
     </coordinates>
@@ -293,7 +264,7 @@ da file CSV</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>225</y>
+      <y>288</y>
       <w>81</w>
       <h>135</h>
     </coordinates>
@@ -304,11 +275,39 @@ da file CSV</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>45</x>
-      <y>225</y>
+      <y>288</y>
       <w>90</w>
       <h>324</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;80.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>369</x>
+      <y>216</y>
+      <w>342</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>Pasticcino
+--
+-codice: int
+_-nextCodice: int_
+-tipo: String
+-quantita: int
+-costo: double
+--
++Pasticcino(tipo: String, quantita: int, codice)
++Pasticcino(Pasticcino pasticcino)
++getTipo(): String
++setTipo(tipo: String): void
++getCosto(): double
++getQuantita(): int
++setQuantita(quantita: int): void
++getCodice(): int
++Equals(Object o): boolean
++toString(): String</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
