@@ -4,6 +4,7 @@
  */
 package com.mycompany.pasticceria_selimovic;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -11,7 +12,7 @@ import java.time.Month;
  *Claase che rappresenta un pasticcino
  * @author selimovic aida
  */
-public class Pasticcino 
+public class Pasticcino implements Serializable
 {
     private String tipo;
     private int quantita;
